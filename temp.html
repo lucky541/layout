@@ -82,8 +82,31 @@
       }
       .header1 {
         background: orange;
+        background: radial-gradient(to right, orange, darkorange);
+        width: 80% ;
+        height: 50px;
+        margin-left: 10%;
+        margin-right: 10%;
+        top: 0;
+      }
+      .dialog-box {
+        border: 1px solid gray;
+        position: fixed;
+        top: 20%;
+        left: 20%;
+        width: 60%;
+        height: 60%;
+        background: url('2.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-origin: border-box;
+        display: none;
+      }
+      .header2 {
+        background: orange;
         position: fixed;
         z-index: 100;
+        display: inherit;
         background: radial-gradient(to right, orange, darkorange);
         width: 80% ;
         height: 50px;
@@ -93,12 +116,12 @@
         animation: headermove 1s ;
       }
       @keyframes headermove {
-          from{
-            width: 25% ;
-            height: 20px;
+          0% {
+            width: 80%;
+            height: 0;
           }
-          to {
-            width: 80% ;
+          100% {
+            width: 80%;
             height: 50px;
           }
       }
@@ -106,7 +129,7 @@
   </head>
   <body>
     <header>
-      <div class="header1">
+      <div class="header1" id="myHeader">
 
       </div>
     </header>
@@ -199,6 +222,48 @@
       <div class="temp">
         <div class="image">
           <div class="flare"></div>
+          <img src="http://wallpaperwarrior.com/wp-content/uploads/2016/05/Black-Wallpaper-8.jpg" alt="" />
+        </div>
+        <div class="text">
+          <ta>This is example header</ta>
+          <p>
+            Okay this is content of the above head and done it itt itititti...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="cont">
+      <div class="temp">
+        <div class="image">
+          <div class="flare"></div>
+          <img src="http://wallpaperwarrior.com/wp-content/uploads/2016/05/Black-Wallpaper-8.jpg" alt="" />
+        </div>
+        <div class="text">
+          <ta>This is example header</ta>
+          <p>
+            Okay this is content of the above head and done it itt itititti...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="cont">
+      <div class="temp">
+        <div class="image">
+          <div class="flare"></div>
+          <img src="http://wallpaperwarrior.com/wp-content/uploads/2016/05/Black-Wallpaper-8.jpg" alt="" />
+        </div>
+        <div class="text">
+          <ta>This is example header</ta>
+          <p>
+            Okay this is content of the above head and done it itt itititti...
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="cont">
+      <div class="temp">
+        <div class="image">
+          <div class="flare"></div>
           <img src="https://s-media-cache-ak0.pinimg.com/236x/11/c2/80/11c280cfd0870adc9d73a3e95ab11326.jpg" alt="" />
         </div>
         <div class="text">
@@ -210,9 +275,36 @@
       </div>
     </div>
   </div>
+  <div class="dialog-box" id="myDialog">
 
+  </div>
     <script src='js/masonry.pkgd.min.js'></script>
     <script>
+    var a = document.getElementsByClassName("header1");
+    document.onscroll = function() {myFunction()};
+
+    function myFunction() {
+        if (document.body.scrollTop > 150 || document.documentElement.scrollTop > 150) {
+          document.getElementsByClassName("header1")[0].className = "header2";
+        } else {
+          document.getElementsByClassName("header2")[0].className = "header1";
+        }
+    }
+    document.getElementById("myHeader").addEventListener("click", myFun, true);
+    document.body.onclick = function (e){
+      var x = e.target.getAttribute("id");
+      if(x!="myDialog"&&x!="myHeader")
+      {
+        if(document.getElementById("myDialog").style.display == 'inherit')
+        {
+          document.getElementById("myDialog").style.display = 'none';
+        }
+      }
+    }
+    function myFun() {
+      document.getElementById("myDialog").style.display= 'inherit';
+    }
+
     var container = document.querySelector('#masonry');
     var masonry = new Masonry(container, {
       columnWidth: 100,
